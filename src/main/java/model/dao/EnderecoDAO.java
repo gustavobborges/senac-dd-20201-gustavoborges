@@ -1,6 +1,5 @@
 package model.dao;
 
-public class EnderecoDao
-{
+public class EnderecoDAO {
 
 }

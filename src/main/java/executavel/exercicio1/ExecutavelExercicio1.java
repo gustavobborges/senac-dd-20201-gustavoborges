@@ -40,5 +40,11 @@ public class ExecutavelExercicio1 {
 			
 			//- Consultar no banco
 			
+			
+			//Tela
+			String nome = JOptionPane.showInputDialog("Digite seu nome: ");
+			String sobrenome = JOptionPane.showInputDialog("Digite seu sobrenome: ");
+			String cpf = JOptionPane.showInputDialog("Digite o cpf: ");
+			
 		}	
 }
