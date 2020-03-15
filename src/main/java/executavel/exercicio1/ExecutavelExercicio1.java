@@ -2,8 +2,9 @@ package executavel.exercicio1;
 
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
-import controller.ClienteController;
-import controller.TelefoneController;
+
+import controller.exercicio1.ClienteController;
+import controller.exercicio1.TelefoneController;
 import model.bo.ClienteBO;
 import model.dao.exercicio1.EnderecoDAO;
 import model.vo.exercicio1.Cliente;
@@ -66,8 +67,8 @@ public class ExecutavelExercicio1 {
 		Telefone novoTelefone = new Telefone();
 
 		String codNacional = JOptionPane.showInputDialog("Digite o código do país: ");
-		String ddd = JOptionPane.showInputDialog("Informe o DDD: ");
-		String numero = JOptionPane.showInputDialog("Digite o núúmero: (2 dígitos)");
+		String ddd = JOptionPane.showInputDialog("Informe o DDD: (2 dígitos)");
+		String numero = JOptionPane.showInputDialog("Digite o núúmero: ");
 
 		int opcaoMovel = JOptionPane.showConfirmDialog(null, "O telefone é móvel? ", "Selecione",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
@@ -80,7 +81,7 @@ public class ExecutavelExercicio1 {
 		novoTelefone.setMovel(opcaoMovel == JOptionPane.YES_OPTION);
 		novoTelefone.setAtivo(opcaoAtivo == JOptionPane.YES_OPTION);
 
-		int opcaoDono = JOptionPane.showConfirmDialog(null, "O telefone tem todo? ", "Selecione",
+		int opcaoDono = JOptionPane.showConfirmDialog(null, "O telefone tem dono? ", "Selecione",
 				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
 
 		if (opcaoDono == JOptionPane.YES_OPTION) {

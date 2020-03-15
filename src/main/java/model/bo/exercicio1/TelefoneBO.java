@@ -1,4 +1,4 @@
-package model.bo;
+package model.bo.exercicio1;
 
 import model.dao.exercicio1.TelefoneDAO;
 import model.vo.exercicio1.Telefone;
