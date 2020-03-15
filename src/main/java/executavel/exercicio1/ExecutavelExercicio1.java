@@ -15,8 +15,8 @@ public class ExecutavelExercicio1 {
 
 	public static void main(String[] argumentosLinhaDeComando) {
 
-		// executarExercicio2();
-		executarExercicio3();
+		executarExercicio2();
+		//executarExercicio3();
 	}
 
 	/**
