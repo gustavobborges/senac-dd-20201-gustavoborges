@@ -1,6 +1,7 @@
 package executavel.exercicio1;
 
 import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 import controller.exercicio1.ClienteController;
@@ -15,8 +16,9 @@ public class ExecutavelExercicio1 {
 
 	public static void main(String[] argumentosLinhaDeComando) {
 
-		executarExercicio2();
-		//executarExercicio3();
+		// executarExercicio2();
+
+		executarExercicio3();
 	}
 
 	/**
@@ -36,7 +38,14 @@ public class ExecutavelExercicio1 {
 
 		JOptionPane.showMessageDialog(null, mensagem);
 	}
-	
+
+	/**
+	 * Exercício 3 - Cadastro de telefones com JOptionPane
+	 * 
+	 * Obtém um telefone da tela e salva no banco
+	 * 
+	 * Salvar telefones com e sem dono.
+	 */
 	private static void executarExercicio3() {
 		Telefone novoTelefone = obterTelefoneDaTela();
 
@@ -44,6 +53,39 @@ public class ExecutavelExercicio1 {
 		String mensagem = controlador.salvar(novoTelefone);
 
 		JOptionPane.showMessageDialog(null, mensagem);
+	}
+
+	private static Telefone obterTelefoneDaTela() {
+		Telefone novoTelefone = new Telefone();
+
+		String codigoPais = JOptionPane.showInputDialog("Informe o código do país");
+		String ddd = JOptionPane.showInputDialog("Informe o DDD (2 dígitos)");
+		String numero = JOptionPane.showInputDialog("Informe o número");
+		int opcaoMovel = JOptionPane.showConfirmDialog(null, "O telefone é móvel?", "Selecione",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
+		int opcaoAtivo = JOptionPane.showConfirmDialog(null, "O telefone está ativo?", "Selecione",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
+
+		novoTelefone.setCodigoPais(codigoPais);
+		novoTelefone.setDdd(ddd);
+		novoTelefone.setNumero(numero);
+		novoTelefone.setMovel(opcaoMovel == JOptionPane.YES_OPTION);
+		novoTelefone.setAtivo(opcaoAtivo == JOptionPane.YES_OPTION);
+
+		int opcaoDono = JOptionPane.showConfirmDialog(null, "O telefone possui dono?", "Selecione",
+				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
+
+		if (opcaoDono == JOptionPane.YES_OPTION) {
+			ClienteController controlador = new ClienteController();
+			ArrayList<Cliente> clientes = controlador.listarTodosOsClientes();
+
+			Cliente clienteSelecionado = (Cliente) JOptionPane.showInputDialog(null, "Selecione um cliente", "Clientes",
+					JOptionPane.QUESTION_MESSAGE, null, clientes.toArray(), null);
+
+			novoTelefone.setDono(clienteSelecionado);
+		}
+
+		return novoTelefone;
 	}
 
 	private static Cliente obterClienteDaTela() {
@@ -61,39 +103,5 @@ public class ExecutavelExercicio1 {
 		Cliente novoCliente = new Cliente(nome, sobrenome, cpf, new ArrayList<Telefone>(), enderecoSelecionado);
 
 		return novoCliente;
-	}
-
-	private static Telefone obterTelefoneDaTela() {
-		Telefone novoTelefone = new Telefone();
-
-		String codNacional = JOptionPane.showInputDialog("Digite o código do país: ");
-		String ddd = JOptionPane.showInputDialog("Informe o DDD: (2 dígitos)");
-		String numero = JOptionPane.showInputDialog("Digite o núúmero: ");
-
-		int opcaoMovel = JOptionPane.showConfirmDialog(null, "O telefone é móvel? ", "Selecione",
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
-		int opcaoAtivo = JOptionPane.showConfirmDialog(null, "O telefone está ativo? ", "Selecione",
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
-
-		novoTelefone.setCodigoPais(codNacional);
-		novoTelefone.setDdd(ddd);
-		novoTelefone.setNumero(numero);
-		novoTelefone.setMovel(opcaoMovel == JOptionPane.YES_OPTION);
-		novoTelefone.setAtivo(opcaoAtivo == JOptionPane.YES_OPTION);
-
-		int opcaoDono = JOptionPane.showConfirmDialog(null, "O telefone tem dono? ", "Selecione",
-				JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null);
-
-		if (opcaoDono == JOptionPane.YES_OPTION) {
-			ClienteController controlador = new ClienteController();
-			ArrayList<Cliente> clientes = controlador.listarTodosOsClientes();
-
-			Cliente clienteSelecionado = (Cliente) JOptionPane.showInputDialog(null, "Selecione o Cliente: ",
-					"Clientes", JOptionPane.QUESTION_MESSAGE, null, clientes.toArray(), null);
-
-			novoTelefone.setDono(clienteSelecionado);
-		}
-		
-		return novoTelefone;
 	}
 }

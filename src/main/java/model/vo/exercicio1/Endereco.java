@@ -1,5 +1,6 @@
 package model.vo.exercicio1;
 
+
 public class Endereco {
 
 	private int id;
