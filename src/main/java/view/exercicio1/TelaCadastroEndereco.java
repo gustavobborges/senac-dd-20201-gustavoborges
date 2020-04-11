@@ -164,5 +164,6 @@ public class TelaCadastroEndereco extends JFrame {
 		siglasEstados.add("RS");
 		
 		return siglasEstados;
+		
 	}
 }
