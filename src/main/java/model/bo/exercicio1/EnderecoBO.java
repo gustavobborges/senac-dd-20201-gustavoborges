@@ -11,15 +11,14 @@ public class EnderecoBO {
 	public String excluir(int idSelecionado) {
 		String mensagem = "";
 
-		ClienteDAO clienteDAO = new ClienteDAO();
-		if (clienteDAO.temClienteMorandoNoEndereco(idSelecionado)) {
-			mensagem = "Endereço informado não pode ser excluído, pois existe cliente morando nele.";
-		} else {
+		if (dao.temEnderecoCadastradoComId(idSelecionado)) {
 			if (dao.excluir(idSelecionado)) {
 				mensagem = "Excluído com sucesso";
 			} else {
 				mensagem = "Erro ao excluir";
 			}
+		} else {
+			mensagem = "Erro ao excluir";
 		}
 
 		return mensagem;

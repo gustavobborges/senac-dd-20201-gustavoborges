@@ -9,6 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.text.MaskFormatter;
+
+import controller.exercicio1.EnderecoController;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -16,6 +19,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class TelaCadastroEndereco extends JFrame {
 
@@ -47,95 +51,104 @@ public class TelaCadastroEndereco extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaCadastroEndereco() {
+		setTitle("Cadastro de Endereco");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 206);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblRua = new JLabel("Rua:");
+
+		JLabel lblRua = new JLabel("Rua *:");
 		lblRua.setBounds(10, 15, 60, 14);
 		contentPane.add(lblRua);
-		
+
 		JLabel lblCep = new JLabel("CEP:");
 		lblCep.setBounds(267, 45, 60, 14);
 		contentPane.add(lblCep);
-		
+
 		JLabel lblNewLabel = new JLabel("Estado:");
 		lblNewLabel.setBounds(267, 75, 60, 14);
 		contentPane.add(lblNewLabel);
-		
+
 		JLabel lblCidade = new JLabel("Cidade:");
 		lblCidade.setBounds(10, 75, 60, 14);
 		contentPane.add(lblCidade);
-		
+
 		JLabel lblBairro = new JLabel("Bairro:");
 		lblBairro.setBounds(10, 45, 60, 14);
 		contentPane.add(lblBairro);
-		
+
 		JLabel lblNmero = new JLabel("N\u00FAmero:");
 		lblNmero.setBounds(267, 15, 60, 14);
 		contentPane.add(lblNmero);
-		
+
 		JButton btnSalvar = new JButton("Salvar");
-		btnSalvar.setBounds(139, 133, 89, 23);
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EnderecoController controller = new EnderecoController();
+				controller.salvar(txtRua.getText(), txtBairro.getText(), txtNumero.getText(), txtCep.getText(), txtCidade.getText(), (String) cbSiglaEstado.getSelectedItem());
+			}
+		});
+		btnSalvar.setBounds(221, 128, 89, 23);
 		contentPane.add(btnSalvar);
-		
+
 		JButton btnLimpar = new JButton("Limpar");
 		btnLimpar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				limparCampos();
 			}
-			
-		
+
 		});
-		btnLimpar.setBounds(238, 133, 89, 23);
+		btnLimpar.setBounds(320, 128, 89, 23);
 		contentPane.add(btnLimpar);
-		
+
 		txtRua = new JTextField();
 		txtRua.setBounds(55, 15, 192, 20);
 		contentPane.add(txtRua);
 		txtRua.setColumns(10);
-		
+
 		txtBairro = new JTextField();
 		txtBairro.setBounds(55, 45, 192, 20);
 		contentPane.add(txtBairro);
 		txtBairro.setColumns(10);
-		
+
 		txtCidade = new JTextField();
 		txtCidade.setBounds(55, 75, 192, 20);
 		contentPane.add(txtCidade);
 		txtCidade.setColumns(10);
-		
+
 		txtNumero = new JTextField();
 		txtNumero.setBounds(320, 15, 89, 20);
 		contentPane.add(txtNumero);
 		txtNumero.setColumns(10);
-		
-		//O campo ainda está sem máscara
-		
+
+		// O campo ainda está sem máscara
+
 		try {
-			MaskFormatter mascaraCep = new MaskFormatter("####-###");
-			
-			txtCep = new JFormattedTextField(mascaraCep);
+			MaskFormatter mascaraCep = new MaskFormatter("#####-###"); // Para fazer máscara para delimitar o número de
+																		// campos
+			txtCep = new JFormattedTextField(mascaraCep); // Aqui passou como parâmetro a máscara
 			txtCep.setBounds(320, 45, 89, 20);
 			contentPane.add(txtCep);
-			
-			
+
 		} catch (ParseException e) {
-			//por enquanto não vamos tratar
+			// por enquanto não vamos tratar
 			e.printStackTrace();
 		}
-		
-		//Criar a lista de estados --> Iniciar em outro método
-		//o idela é ter uma tabela com os estados, e consultar a lista no backend xD
-		
+
+		// Criar a lista de estados --> Iniciar em outro método
+		// o idela é ter uma tabela com os estados, e consultar a lista no backend xD
+
 		ArrayList<String> siglasEstados = consultarEstados();
 		cbSiglaEstado = new JComboBox(siglasEstados.toArray());
 		cbSiglaEstado.setBounds(320, 75, 89, 22);
 		contentPane.add(cbSiglaEstado);
 		
+		JLabel lblNewLabel_1 = new JLabel("(*) campos obrigat\u00F3rios");
+		lblNewLabel_1.setBounds(24, 137, 130, 14);
+		contentPane.add(lblNewLabel_1);
+
 	}
 
 	protected void limparCampos() {
@@ -145,15 +158,16 @@ public class TelaCadastroEndereco extends JFrame {
 		this.txtCidade.setText("");
 		this.txtNumero.setText("");
 		this.txtCep.setText("");
-		
-		// Campos com combobox: "setar" o índice selecionado para -1 (sem item selecionado no comboBox)
+
+		// Campos com combobox: "setar" o índice selecionado para -1 (sem item
+		// selecionado no comboBox)
 		this.cbSiglaEstado.setSelectedIndex(-1);
-		
+
 	}
 
 	private ArrayList<String> consultarEstados() {
 		ArrayList<String> siglasEstados = new ArrayList<String>();
-		
+
 		siglasEstados.add("AC");
 		siglasEstados.add("BA");
 		siglasEstados.add("CE");
@@ -162,8 +176,8 @@ public class TelaCadastroEndereco extends JFrame {
 		siglasEstados.add("PR");
 		siglasEstados.add("SC");
 		siglasEstados.add("RS");
-		
+
 		return siglasEstados;
-		
+
 	}
 }
