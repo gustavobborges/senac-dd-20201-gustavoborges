@@ -11,13 +11,16 @@ public class EnderecoBO {
 	public String excluir(int idSelecionado) {
 		String mensagem = "";
 
-		if (dao.temEnderecoCadastradoComId(idSelecionado)) {
+		ClienteDAO clienteDAO = new ClienteDAO();
+		
+		if (clienteDAO.temClienteMorandoNoEndereco(idSelecionado)) {
+			mensagem = "Endereço informado não pode ser excluído, pois existe cliente morando nele.";
+		} else {
 			if (dao.excluir(idSelecionado)) {
 				mensagem = "Excluído com sucesso";
 			} else {
 				mensagem = "Erro ao excluir";
 			}
-		} else {
 			mensagem = "Erro ao excluir";
 		}
 
@@ -39,18 +42,22 @@ public class EnderecoBO {
 	}
 
 	// TODO criar os métodos para chamar os métodos PÚBLICOS no EnderecoDAO
-	
+
 	// esse eu que criei \/
 	public String alterar(Endereco endereco) {
 		String mensagem = "";
+
 		boolean alterar = dao.alterar(endereco);
+
 		if (dao.alterar(endereco)) {
 			if (alterar = true) {
 				mensagem = "Endereco alterado com sucesso!";
 			} else {
-				mensagem = "Erro ao salvar";
+				mensagem = "Erro ao alterar";
 			}
 		}
+		
+		
 		return mensagem;
 
 	}

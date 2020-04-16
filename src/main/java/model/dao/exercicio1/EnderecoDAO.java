@@ -15,11 +15,9 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 
 	public Endereco salvar(Endereco novaEntidade) {
 		Connection conexao = Banco.getConnection();
-
 		String sql = " INSERT INTO ENDERECO (CEP, ESTADO, CIDADE, RUA, BAIRRO, NUMERO) " + " VALUES ( "
 				+ novaEntidade.getCep() + ", " + novaEntidade.getEstado() + "," + novaEntidade.getCidade() + ", "
 				+ novaEntidade.getRua() + "," + novaEntidade.getBairro() + "," + novaEntidade.getNumero() + ")";
-
 		PreparedStatement statement = Banco.getPreparedStatement(conexao, sql);
 		try {
 			statement.executeUpdate(sql, Statement.RETURN_GENERATED_KEYS);
@@ -36,9 +34,8 @@ public class EnderecoDAO implements BaseDAO<Endereco> {
 	}
 
 	public boolean excluir(int id) {
-		String sql = " DELETE FROM endereco WHERE id = ?";
-
 		Connection conexao = Banco.getConnection();
+		String sql = " DELETE FROM endereco WHERE id = ?";
 		PreparedStatement preparedStatement = Banco.getPreparedStatement(conexao, sql);
 		boolean excluiu = false;
 		try {
