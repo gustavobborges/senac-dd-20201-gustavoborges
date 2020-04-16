@@ -14,4 +14,6 @@ public class ClienteBO {
 	}
 
 	// TODO criar os métodos para chamar os métodos PÚBLICOS no ClienteDAO
+	
+	
 }

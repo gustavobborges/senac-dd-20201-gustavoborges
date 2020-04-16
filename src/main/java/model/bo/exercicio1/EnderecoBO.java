@@ -39,4 +39,19 @@ public class EnderecoBO {
 	}
 
 	// TODO criar os métodos para chamar os métodos PÚBLICOS no EnderecoDAO
+	
+	// esse eu que criei \/
+	public String alterar(Endereco endereco) {
+		String mensagem = "";
+		boolean alterar = dao.alterar(endereco);
+		if (dao.alterar(endereco)) {
+			if (alterar = true) {
+				mensagem = "Endereco alterado com sucesso!";
+			} else {
+				mensagem = "Erro ao salvar";
+			}
+		}
+		return mensagem;
+
+	}
 }
