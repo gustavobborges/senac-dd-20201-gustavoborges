@@ -12,6 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 import controller.exercicio1.ClienteController;
 import model.vo.exercicio1.Cliente;
+import net.miginfocom.swing.MigLayout;
 
 public class TelaListagemClientes {
 
@@ -71,7 +72,6 @@ public class TelaListagemClientes {
 		frmListagemDeClientes.setTitle("Listagem de Clientes");
 		frmListagemDeClientes.setBounds(100, 100, 700, 520);
 		frmListagemDeClientes.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmListagemDeClientes.getContentPane().setLayout(null);
 
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
@@ -82,12 +82,11 @@ public class TelaListagemClientes {
 				atualizarTabelaClientes();
 			}
 		});
-		btnBuscar.setBounds(280, 30, 120, 30);
-		frmListagemDeClientes.getContentPane().add(btnBuscar);
+		frmListagemDeClientes.getContentPane().setLayout(new MigLayout("", "[670.00px]", "[48.00px][429.00px]"));
+		frmListagemDeClientes.getContentPane().add(btnBuscar, "cell 0 0,grow");
 
 		tblClientes = new JTable();
-		tblClientes.setBounds(25, 70, 635, 400);
-		frmListagemDeClientes.getContentPane().add(tblClientes);
+		frmListagemDeClientes.getContentPane().add(tblClientes, "cell 0 1,grow");
 	}
 
 }
