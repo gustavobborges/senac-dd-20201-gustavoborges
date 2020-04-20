@@ -10,9 +10,7 @@ public class Cliente {
 	private ArrayList<Telefone> telefones;
 	private Endereco endereco;
 
-	public Cliente() {
-		
-	}
+
 	
 	public Cliente(String nome, String sobrenome, String cpf, ArrayList<Telefone> telefones, Endereco endereco) {
 		super();

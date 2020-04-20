@@ -34,4 +34,27 @@ public class ClienteBO {
 		} 
 		return null;
 	}
+	
+	public String salvar(Cliente cliente) {
+		
+		String mensagem = "";
+		
+		if (!cliente.cpf.isEmpty()) {
+			
+		}
+		
+		ClienteDAO clienteDAO = new ClienteDAO();
+		
+		
+		
+		if (cliente.getCpf().length() == 11) {
+			clienteDAO.salvar(cliente);
+			mensagem = "Cliente salvo com sucesso!";
+		} 
+		else { 
+			mensagem = "Favor, inserir um CPF de 11 dígitos..";			
+		}
+		return mensagem;
+		
+	}
 }
