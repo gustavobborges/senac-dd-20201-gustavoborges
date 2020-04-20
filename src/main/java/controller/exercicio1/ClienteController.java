@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import model.bo.ClienteBO;
 import model.bo.exercicio1.EnderecoBO;
 import model.dao.exercicio1.ClienteDAO;
+import model.dao.exercicio1.TelefoneDAO;
 import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Endereco;
+import model.vo.exercicio1.Telefone;
 
 public class ClienteController {
 
@@ -54,13 +56,18 @@ public class ClienteController {
 	public String excluir(Cliente cliente) {
 		String mensagem = "";
 		
-		try {
-			String clienteExcluido = clienteExcluido.toString();
-			mensagem = bo.excluir(clienteExcluido);
+		ClienteDAO clienteDAO = new ClienteDAO();
+		TelefoneDAO telefoneDAO = new TelefoneDAO();
 		
-		} catch mensagem = "Selecione um cliente...";
-	}
-
+		Telefone telefonesDoCliente = telefoneDAO.consultarPorId(cliente.getId());
+		
+		if (!telefonesDoCliente.isEmpty()) {
+			mensagem = "O cliente não pode ser excluido pois tem telefone(s) cadastrado(s)..";
+		} else {
+			ClienteDAO.excluir(cliente.getId());
+			mensagem = "O Cliente foi excluído com sucesso!";
+		}	
+			
 	return mensagem;
 
 	}

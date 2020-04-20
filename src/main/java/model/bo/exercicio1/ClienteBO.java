@@ -25,36 +25,35 @@ public class ClienteBO {
 		} else {
 			if (cliente.getTelefones().isEmpty()) {
 				if (clienteDAO.excluir(cliente.getId())) {
+				} else {
+					mensagem = "Ecluído com sucesso!";
+				}
 			} else {
-				mensagem = "Ecluído com sucesso!";
-			} 
-		}else {
-			mensagem = "Erro ao excluir..";
+				mensagem = "Erro ao excluir..";
 			}
-		} 
+		}
 		return null;
 	}
-	
+
+	ClienteDAO clienteDAO = new ClienteDAO();
+
 	public String salvar(Cliente cliente) {
-		
+
 		String mensagem = "";
-		
-		if (!cliente.cpf.isEmpty()) {
-			
+
+		if (cliente.getCpf() != null) {
+
+			if (cliente.getCpf().length() == 11) {
+				clienteDAO.salvar(cliente);
+				mensagem = "Cliente salvo com sucesso!";
+			} else {
+				mensagem = "Favor, inserir um CPF de 11 dígitos..";
+			}
+		} else {
+			mensagem = "Insira o CPF!";
 		}
-		
-		ClienteDAO clienteDAO = new ClienteDAO();
-		
-		
-		
-		if (cliente.getCpf().length() == 11) {
-			clienteDAO.salvar(cliente);
-			mensagem = "Cliente salvo com sucesso!";
-		} 
-		else { 
-			mensagem = "Favor, inserir um CPF de 11 dígitos..";			
-		}
+
 		return mensagem;
-		
+
 	}
 }

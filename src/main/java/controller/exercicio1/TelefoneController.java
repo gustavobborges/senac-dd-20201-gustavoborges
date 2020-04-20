@@ -1,24 +1,16 @@
 package controller.exercicio1;
 
+import java.util.ArrayList;
+
 import model.bo.exercicio1.TelefoneBO;
+import model.dao.exercicio1.TelefoneDAO;
 import model.vo.exercicio1.Telefone;
 
 public class TelefoneController {
 
 	private TelefoneBO bo = new TelefoneBO();
-
-	/**
-	 * Salva um novo telefone, validando os valores informados
-	 * 
-	 * @param novoTelefone o telefone a ser salvo;
-	 * @return uma mensagem informando uma das opções a seguir:
-	 * 
-	 *         (1) há campos para ajustar
-	 * 
-	 *         (2) salvo com sucesso
-	 * 
-	 *         (3) erro ao salvar
-	 */
+	private TelefoneDAO dao = new TelefoneDAO();
+	
 
 	public String salvar(Telefone novoTelefone) {
 		String mensagemValidacao = validarCampos(novoTelefone);
@@ -57,6 +49,11 @@ public class TelefoneController {
 		// TODO desenvolver
 
 		return "";
+	}
+
+	
+	public ArrayList<Telefone> listarTodosOsTelefones() {
+		return dao.consultarTodos();
 	}
 
 }

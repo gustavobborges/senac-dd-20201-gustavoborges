@@ -10,7 +10,9 @@ public class Cliente {
 	private ArrayList<Telefone> telefones;
 	private Endereco endereco;
 
-
+	public Cliente() {
+		
+	}
 	
 	public Cliente(String nome, String sobrenome, String cpf, ArrayList<Telefone> telefones, Endereco endereco) {
 		super();
@@ -20,6 +22,7 @@ public class Cliente {
 		this.telefones = telefones;
 		this.endereco = endereco;
 	}
+
 
 	public String getNomeCompleto() {
 		return this.nome + " " + this.sobrenome;
