@@ -9,10 +9,20 @@ import javax.swing.border.EmptyBorder;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import controller.exercicio1.ClienteController;
+import model.dao.exercicio1.ClienteDAO;
+import model.entity.Cliente;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
 
 public class TelaExclusaoCliente extends JFrame {
 
@@ -73,6 +83,14 @@ public class TelaExclusaoCliente extends JFrame {
 				FormSpecs.RELATED_GAP_ROWSPEC,
 				RowSpec.decode("max(75dlu;default)"),}));
 		
+		
+		
+		// Criar a lista de estados --> Iniciar em outro método
+				// o idela é ter uma tabela com os estados, e consultar a lista no backend xD
+
+		ArrayList<String> listaClientes = consultarTodos();
+		cbClientes = new JComboBox(cbClientes.toArray());
+		
 		JComboBox comboBox = new JComboBox();
 		comboBox.setToolTipText("Cliente");
 		contentPane.add(comboBox, "15, 2, 2, 5, fill, default");
@@ -84,7 +102,21 @@ public class TelaExclusaoCliente extends JFrame {
 		contentPane.add(btnNewButton_1, "2, 10, 13, 1, fill, fill");
 		
 		JButton btnNewButton = new JButton("Excluir!");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ClienteController controladora = new ClienteController();
+				
+				String mensagem = controladora.excluir((Cliente)cbClientes.getSelectedItem());
+				JOptionPane.showMessageDialog(null, mensagem);
+			}
+		});
 		contentPane.add(btnNewButton, "16, 10, default, fill");
+	}
+
+	private ArrayList<String> consultarTodos() {
+		ClienteDAO clienteDAO = new ClienteDAO();
+		ArrayList[] consultarTodos = consultarTodos.consultarTodos();
+		return null;
 	}
 
 }

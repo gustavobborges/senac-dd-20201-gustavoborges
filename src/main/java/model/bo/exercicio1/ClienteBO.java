@@ -14,6 +14,24 @@ public class ClienteBO {
 	}
 
 	// TODO criar os métodos para chamar os métodos PÚBLICOS no ClienteDAO
-	
-	
+
+	public String excluir(Cliente cliente) {
+
+		String mensagem = "";
+		ClienteDAO clienteDAO = new ClienteDAO();
+
+		if (cliente == null) {
+			mensagem = "Favor, selecione um cliente...";
+		} else {
+			if (cliente.getTelefones().isEmpty()) {
+				if (clienteDAO.excluir(cliente.getId())) {
+			} else {
+				mensagem = "Ecluído com sucesso!";
+			} 
+		}else {
+			mensagem = "Erro ao excluir..";
+			}
+		} 
+		return null;
+	}
 }
