@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import view.aula10.paineis.PainelCadastroTelefone;
+
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
@@ -22,6 +25,7 @@ public class MenuPrincipal extends JFrame {
 
 	private JPanel contentPane;
 	JDesktopPane desktopPane = new JDesktopPane();
+	private PainelCadastroTelefone painelCadastroTelefone;
 
 	/**
 	 * Launch the application.
@@ -58,16 +62,14 @@ public class MenuPrincipal extends JFrame {
 		JMenuItem miCadastroCliente = new JMenuItem("Cadastro");
 		miCadastroCliente.addActionListener(new ActionListener() {
 
-			
-			
 			public void actionPerformed(ActionEvent e) {
 				int contNovaTelinha = 0;
 				TelaInternaCadastroCliente novaTelinha = new TelaInternaCadastroCliente();
-				
+
 				if (contNovaTelinha == 0) {
-						contNovaTelinha ++;
-				} else {		
-				novaTelinha.dispose();
+					contNovaTelinha++;
+				} else {
+					novaTelinha.dispose();
 				}
 
 				desktopPane.add(novaTelinha);
@@ -110,10 +112,38 @@ public class MenuPrincipal extends JFrame {
 				.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-treinamento.png")));
 		mnSobre.add(mntmDesenvolvedorWindow);
 
-		desktopPane = new JDesktopPane();
-		desktopPane.setBackground(Color.GRAY);
-		desktopPane.setBounds(5, 5, 1000, 800);
+		JMenu mnTelefones = new JMenu("Telefones");
+		mnTelefones
+				.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-suporte-on-line-filled.png")));
+		menuBar.add(mnTelefones);
 
-		getContentPane().add(desktopPane);
+		JMenuItem miCadastrarTelefone = new JMenuItem("Cadastro");
+		miCadastrarTelefone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// TODO
+				// instanciar o painel escolhido
+				painelCadastroTelefone = new PainelCadastroTelefone();
+				// atualizar o contentPane da tela principal, mostrando o painel escolhido
+				// telefones
+				setContentPane(painelCadastroTelefone);
+				revalidate();
+			}
+		});
+		miCadastrarTelefone.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_7, 0));
+		miCadastrarTelefone.setIcon(
+				new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
+		mnTelefones.add(miCadastrarTelefone);
+
+		JMenuItem miExcluirCliente = new JMenuItem("Excluir");
+		miExcluirCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_9, 0));
+		miExcluirCliente.setIcon(new ImageIcon(
+				MenuPrincipal.class.getResource("/icones/icons8-\u00E0-esquerda-dentro-de-um-c\u00EDrculo.png")));
+		mnTelefones.add(miExcluirCliente);
+
+		//TODO usar apenas na opção 2 da aula 10..
+		//desktopPane = new JDesktopPane();
+		//desktopPane.setBackground(Color.GRAY);
+		//desktopPane.setBounds(5, 5, 1000, 800);
+		//getContentPane().add(desktopPane);
 	}
 }

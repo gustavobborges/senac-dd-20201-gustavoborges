@@ -2,29 +2,37 @@ package model.entity;
 
 import java.util.List;
 
-public class Telefone extends Cliente{
-	
+public class Telefone extends Cliente {
+
 	private int idTelefone;
+	private Cliente dono;
 	private String codNacional;
 	private String ddd;
-	private String  numero;
+	private String numero;
 	private boolean movel;
-	private Cliente dono;
-	
+	private boolean ativo;
+
 	public Telefone(int idCliente, String nome, String sobrenome, String cpf, Endereco endereco,
-			List<Telefone> telefones, int idTelefone, String codNacional, String ddd, String numero, boolean movel,
-			Cliente dono) {
+			List<Telefone> telefones, int idTelefone, Cliente dono, String codNacional, String ddd, String numero,
+			boolean movel, boolean ativo) {
 		super(idCliente, nome, sobrenome, cpf, endereco, telefones);
 		this.idTelefone = idTelefone;
+		this.dono = dono;
 		this.codNacional = codNacional;
 		this.ddd = ddd;
 		this.numero = numero;
 		this.movel = movel;
-		this.dono = dono;
+		this.ativo = ativo;
 	}
 
 	public Telefone() {
 		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Telefone(int idCliente, String nome, String sobrenome, String cpf, Endereco endereco,
+			List<Telefone> telefones) {
+		super(idCliente, nome, sobrenome, cpf, endereco, telefones);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -34,6 +42,14 @@ public class Telefone extends Cliente{
 
 	public void setIdTelefone(int idTelefone) {
 		this.idTelefone = idTelefone;
+	}
+
+	public Cliente getDono() {
+		return dono;
+	}
+
+	public void setDono(Cliente dono) {
+		this.dono = dono;
 	}
 
 	public String getCodNacional() {
@@ -68,12 +84,12 @@ public class Telefone extends Cliente{
 		this.movel = movel;
 	}
 
-	public Cliente getDono() {
-		return dono;
+	public boolean isAtivo() {
+		return ativo;
 	}
 
-	public void setDono(Cliente dono) {
-		this.dono = dono;
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	@Override

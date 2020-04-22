@@ -27,6 +27,10 @@ public class Cliente {
 		// TODO Auto-generated constructor stub
 	}
 
+	public String getNomeCompleto() {
+		return this.nome + " " + this.sobrenome;
+	}
+	
 	public int getIdCliente() {
 		return idCliente;
 	}
@@ -75,10 +79,22 @@ public class Cliente {
 		this.telefones = telefones;
 	}
 
-	@Override
+	@Override 
 	public String toString() {
-		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", cpf=" + cpf + ", endereco=" + endereco
-				+ ", telefones=" + telefones + "]";
+		String mensagem = "Cliente: " + this.getNomeCompleto() + " {" + cpf + "}";
+
+		for(Telefone t:telefones)	{
+			mensagem += t.toString() + "/n";
+		}
+
+		return mensagem;
+
 	}
 
+	public int getId() {
+		return idCliente;
+	}
+	
+
 }
+
