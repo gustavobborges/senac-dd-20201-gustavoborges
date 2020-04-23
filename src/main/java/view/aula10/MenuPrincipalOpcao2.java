@@ -21,7 +21,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JDesktopPane;
 import java.awt.Color;
 
-public class MenuPrincipal extends JFrame {
+public class MenuPrincipalOpcao2 extends JFrame {
 
 	private JPanel contentPane;
 	JDesktopPane desktopPane = new JDesktopPane();
@@ -34,7 +34,7 @@ public class MenuPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenuPrincipal frame = new MenuPrincipal();
+					MenuPrincipalOpcao2 frame = new MenuPrincipalOpcao2();
 					frame.setExtendedState(MAXIMIZED_BOTH);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -47,7 +47,7 @@ public class MenuPrincipal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MenuPrincipal() {
+	public MenuPrincipalOpcao2() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 451, 302);
 
@@ -56,7 +56,7 @@ public class MenuPrincipal extends JFrame {
 
 		JMenu menuCliente = new JMenu("Clientes");
 		menuCliente
-				.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-gest\u00E3o-de-cliente.png")));
+				.setIcon(new ImageIcon(MenuPrincipalOpcao2.class.getResource("/icones/icons8-gest\u00E3o-de-cliente.png")));
 		menuBar.add(menuCliente);
 
 		JMenuItem miCadastroCliente = new JMenuItem("Cadastro");
@@ -78,43 +78,12 @@ public class MenuPrincipal extends JFrame {
 		});
 		miCadastroCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
 		miCadastroCliente.setIcon(
-				new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
+				new ImageIcon(MenuPrincipalOpcao2.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
 		menuCliente.add(miCadastroCliente);
-
-		JMenu mnSobre = new JMenu("Sobre");
-		mnSobre.setIcon(new ImageIcon(
-				MenuPrincipal.class.getResource("/icones/icons8-cart\u00E3o-de-cr\u00E9dito-sem-contato.png")));
-		menuBar.add(mnSobre);
-
-		JMenuItem mntmDesenvolvedor = new JMenuItem("Desenvolvedor");
-		mntmDesenvolvedor.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaInternaMenuSobreExterno menuSobre = new TelaInternaMenuSobreExterno();
-				desktopPane.add(menuSobre);
-				menuSobre.show();
-			}
-		});
-		mntmDesenvolvedor.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
-		mntmDesenvolvedor.setIcon(
-				new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-\u0441harlie-\u0441haplin.png")));
-		mnSobre.add(mntmDesenvolvedor);
-
-		JMenuItem mntmDesenvolvedorWindow = new JMenuItem("Desenvolvedor Window");
-		mntmDesenvolvedorWindow.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				TelaInternaMenuSobreExterno menuSobreExterno = new TelaInternaMenuSobreExterno();
-				desktopPane.add(menuSobreExterno);
-				menuSobreExterno.show();
-			}
-		});
-		mntmDesenvolvedorWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0));
-		mntmDesenvolvedorWindow
-				.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-treinamento.png")));
-		mnSobre.add(mntmDesenvolvedorWindow);
 
 		JMenu mnTelefones = new JMenu("Telefones");
 		mnTelefones
-				.setIcon(new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-suporte-on-line-filled.png")));
+				.setIcon(new ImageIcon(MenuPrincipalOpcao2.class.getResource("/icones/icons8-suporte-on-line-filled.png")));
 		menuBar.add(mnTelefones);
 
 		JMenuItem miCadastrarTelefone = new JMenuItem("Cadastro");
@@ -131,14 +100,45 @@ public class MenuPrincipal extends JFrame {
 		});
 		miCadastrarTelefone.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_7, 0));
 		miCadastrarTelefone.setIcon(
-				new ImageIcon(MenuPrincipal.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
+				new ImageIcon(MenuPrincipalOpcao2.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
 		mnTelefones.add(miCadastrarTelefone);
 
 		JMenuItem miExcluirCliente = new JMenuItem("Excluir");
 		miExcluirCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_9, 0));
 		miExcluirCliente.setIcon(new ImageIcon(
-				MenuPrincipal.class.getResource("/icones/icons8-\u00E0-esquerda-dentro-de-um-c\u00EDrculo.png")));
+				MenuPrincipalOpcao2.class.getResource("/icones/icons8-\u00E0-esquerda-dentro-de-um-c\u00EDrculo.png")));
 		mnTelefones.add(miExcluirCliente);
+		
+				JMenu mnSobre = new JMenu("Sobre");
+				mnSobre.setIcon(new ImageIcon(
+						MenuPrincipalOpcao2.class.getResource("/icones/icons8-cart\u00E3o-de-cr\u00E9dito-sem-contato.png")));
+				menuBar.add(mnSobre);
+				
+						JMenuItem mntmDesenvolvedor = new JMenuItem("Desenvolvedor");
+						mntmDesenvolvedor.addActionListener(new ActionListener() {
+							public void actionPerformed(ActionEvent e) {
+								TelaInternaMenuSobreExterno menuSobre = new TelaInternaMenuSobreExterno();
+								desktopPane.add(menuSobre);
+								menuSobre.show();
+							}
+						});
+						mntmDesenvolvedor.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F5, 0));
+						mntmDesenvolvedor.setIcon(
+								new ImageIcon(MenuPrincipalOpcao2.class.getResource("/icones/icons8-\u0441harlie-\u0441haplin.png")));
+						mnSobre.add(mntmDesenvolvedor);
+						
+								JMenuItem mntmDesenvolvedorWindow = new JMenuItem("Desenvolvedor Window");
+								mntmDesenvolvedorWindow.addActionListener(new ActionListener() {
+									public void actionPerformed(ActionEvent e) {
+										TelaInternaMenuSobreExterno menuSobreExterno = new TelaInternaMenuSobreExterno();
+										desktopPane.add(menuSobreExterno);
+										menuSobreExterno.show();
+									}
+								});
+								mntmDesenvolvedorWindow.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0));
+								mntmDesenvolvedorWindow
+										.setIcon(new ImageIcon(MenuPrincipalOpcao2.class.getResource("/icones/icons8-treinamento.png")));
+								mnSobre.add(mntmDesenvolvedorWindow);
 
 		//TODO usar apenas na opção 2 da aula 10..
 		//desktopPane = new JDesktopPane();
