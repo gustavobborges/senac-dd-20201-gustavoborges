@@ -6,9 +6,11 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import controller.exercicio1.ClienteController;
+import controller.exercicio1.EnderecoController;
 import controller.exercicio1.TelefoneController;
 import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Telefone;
+import view.aula10.TelaInternaCadastroCliente;
 
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
@@ -21,6 +23,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 
 public class PainelCadastroTelefone extends JPanel {
@@ -33,9 +36,19 @@ public class PainelCadastroTelefone extends JPanel {
 	private JButton btnSalvar;
 	private ArrayList<Cliente> clientes;
 
-	/**
-	 * Create the panel.
-	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PainelCadastroTelefone s = new PainelCadastroTelefone();
+					s.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
 	public PainelCadastroTelefone() {
 		setLayout(new FormLayout(
 				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC,
@@ -87,32 +100,48 @@ public class PainelCadastroTelefone extends JPanel {
 		cbClientes = new JComboBox(clientes.toArray());
 		cbClientes.setSelectedIndex(-1);
 		add(cbClientes, "6, 14, 3, 1, fill, default");
-				
-						JButton btnVoltar = new JButton("Voltar");
-						add(btnVoltar, "4, 18");
-		
-				btnLimpar = new JButton("Limpar");
-				add(btnLimpar, "6, 18, fill, default");
-		
-				btnSalvar = new JButton("Salvar");
-				btnSalvar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						TelefoneController controladorTelefone = new TelefoneController();
-						Telefone novoTelefone = new Telefone();
-						novoTelefone.setCodigoPais(txtCodigo.getText());
-						novoTelefone.setDdd(txtDDD.getText());
-						novoTelefone.setNumero(txtNumero.getText());
-						novoTelefone.setMovel(chkMovel.isSelected());
 
-						if (cbClientes.getSelectedItem() != null) {
-							novoTelefone.setDono((Cliente) cbClientes.getSelectedItem());
-						}
-						
-						String mensagem = controladorTelefone.salvar(novoTelefone);
-						JOptionPane.showMessageDialog(null, mensagem);
-					}
-				});
-				add(btnSalvar, "8, 18, fill, default");
+		JButton btnVoltar = new JButton("Voltar");
+		add(btnVoltar, "4, 18");
+
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparCampos();
+			}
+
+		});
+		add(btnLimpar, "6, 18, fill, default");
+
+		btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				TelefoneController controladorTelefone = new TelefoneController();
+				Telefone novoTelefone = new Telefone();
+				novoTelefone.setCodigoPais(txtCodigo.getText());
+				novoTelefone.setDdd(txtDDD.getText());
+				novoTelefone.setNumero(txtNumero.getText());
+				novoTelefone.setMovel(chkMovel.isSelected());
+
+				if (cbClientes.getSelectedItem() != null) {
+					novoTelefone.setDono((Cliente) cbClientes.getSelectedItem());
+				}
+
+				String mensagem = controladorTelefone.salvar(novoTelefone);
+				JOptionPane.showMessageDialog(null, mensagem);
+			}
+		});
+
+		add(btnSalvar, "8, 18, fill, default");
+
+	}
+
+	protected void limparCampos() {
+		this.txtCodigo.setText("");
+		this.txtDDD.setText("");
+		this.txtNumero.setText("");
+		this.cbClientes.setSelectedItem(-1);
+		this.chkMovel.setAction(null);
 
 	}
 

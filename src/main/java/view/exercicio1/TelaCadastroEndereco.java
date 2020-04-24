@@ -61,28 +61,18 @@ public class TelaCadastroEndereco extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		
-		//Força a tela maximizada
-		//this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		
-		contentPane.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.UNRELATED_GAP_COLSPEC,
-				ColumnSpec.decode("52px"),
-				ColumnSpec.decode("146px:grow"),
-				ColumnSpec.decode("max(0dlu;default)"),
-				ColumnSpec.decode("49px"),
-				ColumnSpec.decode("113px:grow"),},
-			new RowSpec[] {
-				FormSpecs.PARAGRAPH_GAP_ROWSPEC,
-				RowSpec.decode("20px"),
-				FormSpecs.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("20px"),
-				FormSpecs.UNRELATED_GAP_ROWSPEC,
-				RowSpec.decode("22px"),
-				RowSpec.decode("31px"),
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				RowSpec.decode("23px"),}));
+
+		// Força a tela maximizada
+		// this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+		contentPane.setLayout(new FormLayout(
+				new ColumnSpec[] { FormSpecs.UNRELATED_GAP_COLSPEC, ColumnSpec.decode("52px"),
+						ColumnSpec.decode("146px:grow"), ColumnSpec.decode("max(0dlu;default)"),
+						ColumnSpec.decode("49px"), ColumnSpec.decode("113px:grow"), },
+				new RowSpec[] { FormSpecs.PARAGRAPH_GAP_ROWSPEC, RowSpec.decode("20px"),
+						FormSpecs.UNRELATED_GAP_ROWSPEC, RowSpec.decode("20px"), FormSpecs.UNRELATED_GAP_ROWSPEC,
+						RowSpec.decode("22px"), RowSpec.decode("31px"), FormSpecs.RELATED_GAP_ROWSPEC,
+						FormSpecs.DEFAULT_ROWSPEC, RowSpec.decode("23px"), }));
 
 		JLabel lblRua = new JLabel("Rua *:");
 		contentPane.add(lblRua, "2, 2, left, top");
@@ -137,25 +127,26 @@ public class TelaCadastroEndereco extends JFrame {
 		ArrayList<String> siglasEstados = consultarEstados();
 		cbSiglaEstado = new JComboBox(siglasEstados.toArray());
 		contentPane.add(cbSiglaEstado, "6, 6, fill, top");
-		
-				JButton btnLimpar = new JButton("Limpar");
-				btnLimpar.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						limparCampos();
-					}
 
-				});
-				
-						JButton btnSalvar = new JButton("Salvar");
-						btnSalvar.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								EnderecoController controller = new EnderecoController();
-								controller.salvar(txtRua.getText(), txtBairro.getText(), txtNumero.getText(), txtCep.getText(), txtCidade.getText(), (String) cbSiglaEstado.getSelectedItem());
-							}
-						});
-						contentPane.add(btnSalvar, "2, 9, 2, 1, fill, fill");
-				contentPane.add(btnLimpar, "5, 9, 2, 1, default, top");
-		
+		JButton btnLimpar = new JButton("Limpar");
+		btnLimpar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparCampos();
+			}
+
+		});
+
+		JButton btnSalvar = new JButton("Salvar");
+		btnSalvar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EnderecoController controller = new EnderecoController();
+				controller.salvar(txtRua.getText(), txtBairro.getText(), txtNumero.getText(), txtCep.getText(),
+						txtCidade.getText(), (String) cbSiglaEstado.getSelectedItem());
+			}
+		});
+		contentPane.add(btnSalvar, "2, 9, 2, 1, fill, fill");
+		contentPane.add(btnLimpar, "5, 9, 2, 1, default, top");
+
 		JLabel lblNewLabel_1 = new JLabel("(*) campos obrigat\u00F3rios");
 		contentPane.add(lblNewLabel_1, "2, 10, 2, 1, fill, bottom");
 

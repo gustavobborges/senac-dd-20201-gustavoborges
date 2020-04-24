@@ -25,6 +25,7 @@ public class MenuPrincipalOpcao1 extends JFrame {
 
 	JDesktopPane desktopPane = new JDesktopPane();
 	private TelaInternaCadastroCliente janelinhaCadastroCliente;
+	private PainelCadastroTelefone janelinhaCadastroTelefone;
 
 	/**
 	 * Opção 1 da aula 10: (painel com JDesktopPane e telas das opções com
@@ -66,7 +67,7 @@ public class MenuPrincipalOpcao1 extends JFrame {
 				if (janelinhaCadastroCliente == null || !janelinhaCadastroCliente.isVisible()) {
 					janelinhaCadastroCliente = new TelaInternaCadastroCliente();
 					desktopPane.add(janelinhaCadastroCliente);
-					janelinhaCadastroCliente.show();
+					janelinhaCadastroCliente.setVisible(true);
 				}
 
 			}
@@ -85,7 +86,7 @@ public class MenuPrincipalOpcao1 extends JFrame {
 		JMenuItem miDesenvolvedor = new JMenuItem("Desenvolvedor");
 		miDesenvolvedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				TelaInternaMenuSobreExterno menuSobreExterno = new TelaInternaMenuSobreExterno();
 				menuSobreExterno.setVisible(true);
 			}
@@ -94,6 +95,46 @@ public class MenuPrincipalOpcao1 extends JFrame {
 		miDesenvolvedor.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F8, 0));
 		miDesenvolvedor.setIcon(new ImageIcon(MenuPrincipalOpcao1.class.getResource("/icones/icons8-treinamento.png")));
 		menuSobre.add(miDesenvolvedor);
+
+		JMenu menuTelefones = new JMenu("Telefones");
+		menuTelefones.setIcon(
+				new ImageIcon(MenuPrincipalOpcao1.class.getResource("/icones/icons8-suporte-on-line-filled.png")));
+		menuBar.add(menuTelefones);
+
+		JMenuItem miNovo = new JMenuItem("Novo");
+		miNovo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (janelinhaCadastroTelefone == null || !janelinhaCadastroTelefone.isVisible()) {
+					janelinhaCadastroTelefone = new PainelCadastroTelefone();
+					desktopPane.add(janelinhaCadastroTelefone);
+					janelinhaCadastroTelefone.setVisible(true);
+				}
+			}
+
+		});
+		miNovo.setIcon(new ImageIcon(
+				MenuPrincipalOpcao1.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
+		menuTelefones.add(miNovo);
+
+		/*
+		 * *
+		 * 
+		 * 
+		 * JMenuItem miCadastroCliente = new JMenuItem("Cadastro");
+		 * miCadastroCliente.addActionListener(new ActionListener() { public void
+		 * actionPerformed(ActionEvent e) { 
+		 * if(janelinhaCadastroCliente == null ||
+		 * !janelinhaCadastroCliente.isVisible()) { janelinhaCadastroCliente = new
+		 * TelaInternaCadastroCliente(); desktopPane.add(janelinhaCadastroCliente);
+		 * janelinhaCadastroCliente.show(); }
+		 * 
+		 * } }); miCadastroCliente.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6,
+		 * 0)); miCadastroCliente.setIcon(new ImageIcon(
+		 * MenuPrincipalOpcao1.class.getResource(
+		 * "/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
+		 * menuCliente.add(miCadastroCliente);
+		 * 
+		 */
 
 		desktopPane.setBackground(Color.GRAY);
 		desktopPane.setBounds(5, 5, 1000, 800);
