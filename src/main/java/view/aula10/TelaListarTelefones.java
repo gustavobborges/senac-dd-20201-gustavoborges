@@ -2,18 +2,15 @@ package view.aula10;
 
 import java.awt.EventQueue;
 
-import javax.swing.JInternalFrame;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.layout.RowSpec;
-
-import model.vo.exercicio1.Telefone;
-import view.exercicio1.ArrayList;
-
-import com.jgoodies.forms.layout.FormSpecs;
-import javax.swing.JTable;
-import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.FormSpecs;
+import com.jgoodies.forms.layout.RowSpec;
 
 public class TelaListarTelefones extends JInternalFrame {
 	private JTable tableListarTelefones;
@@ -40,6 +37,10 @@ public class TelaListarTelefones extends JInternalFrame {
 	 * Create the frame.
 	 */
 	public TelaListarTelefones() {
+		setClosable(true);
+		setResizable(true);
+		setMaximizable(true);
+		setTitle("Listar Telefones");
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 				FormSpecs.RELATED_GAP_COLSPEC,

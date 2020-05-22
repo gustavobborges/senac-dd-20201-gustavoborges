@@ -26,6 +26,7 @@ public class MenuPrincipalOpcao1 extends JFrame {
 	JDesktopPane desktopPane = new JDesktopPane();
 	private TelaInternaCadastroCliente janelinhaCadastroCliente;
 	private PainelCadastroTelefone janelinhaCadastroTelefone;
+	private TelaExcluirTelefone janelinhaExcluirTelefone;
 
 	/**
 	 * Opção 1 da aula 10: (painel com JDesktopPane e telas das opções com
@@ -77,6 +78,11 @@ public class MenuPrincipalOpcao1 extends JFrame {
 				MenuPrincipalOpcao1.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
 		menuCliente.add(miCadastroCliente);
 
+		JMenuItem mntmExcluir = new JMenuItem("Excluir");
+		mntmExcluir.setIcon(new ImageIcon(
+				MenuPrincipalOpcao1.class.getResource("/icones/icons8-\u00E0-esquerda-dentro-de-um-c\u00EDrculo.png")));
+		menuCliente.add(mntmExcluir);
+
 		// TODO: Exercício 2 da lista 2
 		JMenu menuSobre = new JMenu("Sobre");
 		menuSobre.setIcon(
@@ -87,7 +93,7 @@ public class MenuPrincipalOpcao1 extends JFrame {
 		miDesenvolvedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				TelaInternaMenuSobreExterno menuSobreExterno = new TelaInternaMenuSobreExterno();
+				TelaMenuSobreExterno menuSobreExterno = new TelaMenuSobreExterno();
 				menuSobreExterno.setVisible(true);
 			}
 		});
@@ -116,14 +122,29 @@ public class MenuPrincipalOpcao1 extends JFrame {
 				MenuPrincipalOpcao1.class.getResource("/icones/icons8-adicionar-usu\u00E1rio-masculino.png")));
 		menuTelefones.add(miNovo);
 
+		JMenuItem miExcluirTelefone = new JMenuItem("Excluir");
+		miExcluirTelefone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (janelinhaExcluirTelefone == null || !janelinhaExcluirTelefone.isVisible()) {
+					janelinhaExcluirTelefone = new TelaExcluirTelefone();
+					desktopPane.add(janelinhaExcluirTelefone);
+					janelinhaExcluirTelefone.setVisible(true);
+				}
+
+			}
+		});
+		miExcluirTelefone.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_F6, 0));
+		miExcluirTelefone.setIcon(new ImageIcon(
+				MenuPrincipalOpcao1.class.getResource("/icones/icons8-\u00E0-esquerda-dentro-de-um-c\u00EDrculo.png")));
+		menuTelefones.add(miExcluirTelefone);
+
 		/*
 		 * *
 		 * 
 		 * 
 		 * JMenuItem miCadastroCliente = new JMenuItem("Cadastro");
 		 * miCadastroCliente.addActionListener(new ActionListener() { public void
-		 * actionPerformed(ActionEvent e) { 
-		 * if(janelinhaCadastroCliente == null ||
+		 * actionPerformed(ActionEvent e) { if(janelinhaCadastroCliente == null ||
 		 * !janelinhaCadastroCliente.isVisible()) { janelinhaCadastroCliente = new
 		 * TelaInternaCadastroCliente(); desktopPane.add(janelinhaCadastroCliente);
 		 * janelinhaCadastroCliente.show(); }

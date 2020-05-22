@@ -50,6 +50,7 @@ public class PainelCadastroTelefone extends JPanel {
 	}
 
 	public PainelCadastroTelefone() {
+		
 		setLayout(new FormLayout(
 				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC,
 						FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("max(57dlu;default)"),

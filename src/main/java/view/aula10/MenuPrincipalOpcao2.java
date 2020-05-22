@@ -117,7 +117,7 @@ public class MenuPrincipalOpcao2 extends JFrame {
 						JMenuItem mntmDesenvolvedor = new JMenuItem("Desenvolvedor");
 						mntmDesenvolvedor.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {
-								TelaInternaMenuSobreExterno menuSobre = new TelaInternaMenuSobreExterno();
+								TelaMenuSobreExterno menuSobre = new TelaMenuSobreExterno();
 								desktopPane.add(menuSobre);
 								menuSobre.show();
 							}
@@ -130,7 +130,7 @@ public class MenuPrincipalOpcao2 extends JFrame {
 								JMenuItem mntmDesenvolvedorWindow = new JMenuItem("Desenvolvedor Window");
 								mntmDesenvolvedorWindow.addActionListener(new ActionListener() {
 									public void actionPerformed(ActionEvent e) {
-										TelaInternaMenuSobreExterno menuSobreExterno = new TelaInternaMenuSobreExterno();
+										TelaMenuSobreExterno menuSobreExterno = new TelaMenuSobreExterno();
 										desktopPane.add(menuSobreExterno);
 										menuSobreExterno.show();
 									}

@@ -10,7 +10,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.JTextField;
 import java.awt.Font;
 
-public class TelaInternaMenuSobreExterno extends JFrame {
+public class TelaMenuSobreExterno extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField txtGustavoBorges;
@@ -25,7 +25,7 @@ public class TelaInternaMenuSobreExterno extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaInternaMenuSobreExterno s = new TelaInternaMenuSobreExterno();
+					TelaMenuSobreExterno s = new TelaMenuSobreExterno();
 					s.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +37,7 @@ public class TelaInternaMenuSobreExterno extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TelaInternaMenuSobreExterno() {
+	public TelaMenuSobreExterno() {
 		setTitle("Sobre");
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();

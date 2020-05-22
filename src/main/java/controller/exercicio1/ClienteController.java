@@ -6,13 +6,31 @@ import model.bo.ClienteBO;
 import model.bo.exercicio1.EnderecoBO;
 import model.dao.exercicio1.ClienteDAO;
 import model.dao.exercicio1.TelefoneDAO;
+import model.exercicio1.seletor.ClienteSeletor;
 import model.vo.exercicio1.Cliente;
 import model.vo.exercicio1.Endereco;
 import model.vo.exercicio1.Telefone;
 
 public class ClienteController {
+	private ClienteDAO dao = new ClienteDAO();
 
-	private ClienteBO bo = new ClienteBO();
+	public ArrayList<Cliente> listarTodosOsClientes() {
+		return dao.consultarTodos();
+	}
+
+	public ArrayList<Cliente> listarClientes(ClienteSeletor seletor) {
+		return dao.consultarPorSeletor(seletor);
+	}
+}
+	
+	
+	
+	
+	
+	
+	
+	
+/*	private ClienteBO bo = new ClienteBO();
 	private ClienteDAO dao = new ClienteDAO();
 
 	private static final int TAMANHO_MINIMO = 2;
@@ -78,3 +96,4 @@ public class ClienteController {
 	}
 
 }
+*/

@@ -1,5 +1,6 @@
 package model.vo.exercicio1;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Cliente {
@@ -7,6 +8,7 @@ public class Cliente {
 	private String nome;
 	private String sobrenome;
 	private String cpf;
+	private LocalDate dataNascimento;
 	private ArrayList<Telefone> telefones;
 	private Endereco endereco;
 
@@ -14,15 +16,16 @@ public class Cliente {
 		
 	}
 	
-	public Cliente(String nome, String sobrenome, String cpf, ArrayList<Telefone> telefones, Endereco endereco) {
+	public Cliente(String nome, String sobrenome, String cpf, ArrayList<Telefone> telefones, Endereco endereco,
+			LocalDate dataNascimento) {
 		super();
 		this.nome = nome;
 		this.sobrenome = sobrenome;
 		this.cpf = cpf;
 		this.telefones = telefones;
 		this.endereco = endereco;
+		this.dataNascimento = dataNascimento;
 	}
-
 
 	public String getNomeCompleto() {
 		return this.nome + " " + this.sobrenome;
@@ -70,12 +73,11 @@ public class Cliente {
 
 	@Override
 	public String toString() {
-		String mensagem = "Cliente: " + this.getNomeCompleto() + " (" + cpf + "). " + "\nEndereço: " + endereco
-				+ "\nTelefones: ";
+		String mensagem = "Cliente: " + this.getNomeCompleto() + " (" + cpf + ")";
 
-		for (Telefone t : telefones) {
-			mensagem += t.toString() + "\n";
-		}
+//		for (Telefone t : telefones) {
+//			mensagem += t.toString() + "\n";
+//		}
 
 		return mensagem;
 	}
@@ -86,5 +88,13 @@ public class Cliente {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public LocalDate getDataNascimento() {
+		return dataNascimento;
+	}
+
+	public void setDataNascimento(LocalDate dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 }
